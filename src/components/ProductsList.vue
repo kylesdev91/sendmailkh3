@@ -41,13 +41,24 @@ export default {
   methods: {
     sendmailwget() {
       console.log('clicked');
+      // console.log(this.items)
+      var formData2 = [
+        { id: 1, name: 'Monkey' },
+        { id: 2, name: 'Cat' }
+      ]
+      // var content = formData2.reduce(function (a, b) {
+      var content = this.items.reduce(function (a, b) {
+        return a + '<tr><td>' + b.id + '</a></td><td>' + b.name + '</td></tr>';
+      }, '');
+      console.log("formData2: " + formData2)
       // var content = 'This is my body... and it is hot!'
       var formData = {
         emailSubject: 'Online Order',
         // emailBody: 'This is my body...',
-        emailBody: this.items,
+        emailBody: content,
         orderTotal: 10,
       };
+      console.log("content: " + content)
       axios.post('/api/sendemailwget',formData).then((response) => {
         console.log(response);
       });
