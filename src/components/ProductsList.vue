@@ -44,7 +44,8 @@ export default {
       // var content = 'This is my body... and it is hot!'
       var formData = {
         emailSubject: 'Online Order',
-        emailBody: 'This is my body...',
+        // emailBody: 'This is my body...',
+        emailBody: this.items,
         orderTotal: 10,
       };
       axios.post('/api/sendemailwget',formData).then((response) => {
