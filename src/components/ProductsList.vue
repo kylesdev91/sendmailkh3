@@ -41,7 +41,13 @@ export default {
   methods: {
     sendmailwget() {
       console.log('clicked');
-      axios.get('/api/sendemailwget').then((response) => {
+      // var content = 'This is my body... and it is hot!'
+      var formData = {
+        emailSubject: 'Online Order',
+        emailBody: this.items,
+        orderTotal: 10,
+      };
+      axios.post('/api/sendemailwget',formData).then((response) => {
         console.log(response);
       });
       
